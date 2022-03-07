@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="RuntimeClass.cpp">
+      <Filter>RuntimeClass</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="RuntimeClass">
+      <UniqueIdentifier>{95dfdb30-3cc2-433c-b39a-8a3da7e659a2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RuntimeClass.h">
+      <Filter>RuntimeClass</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
