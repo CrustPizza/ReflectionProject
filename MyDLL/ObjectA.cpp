@@ -1,27 +1,18 @@
 #include "ObjectA.h"
 #include <iostream>
+#include <windows.h>
 
 using std::cout;
 using std::endl;
 
-MYDLL_DECLSPEC void Print()
+ObjectA::ObjectA()
 {
-	cout << "DLL Print2\n";
+	cout << "Create A" << endl;
 }
 
-MYDLL_DECLSPEC ObjectA* CreateObjectA()
+ObjectA::~ObjectA()
 {
-	return new ObjectA;
-}
-
-MYDLL_DECLSPEC ObjectB* CreateObjectB()
-{
-	return new ObjectB;
-}
-
-MYDLL_DECLSPEC void CallTest(ObjectA* obj)
-{
-	obj->test();
+	cout << "Delete A" << endl;
 }
 
 void ObjectA::test()
@@ -29,7 +20,37 @@ void ObjectA::test()
 	cout << "Test A" << endl;
 }
 
+ObjectB::ObjectB()
+{
+	cout << "Create B" << endl;
+}
+
+ObjectB::~ObjectB()
+{
+	cout << "Delete B" << endl;
+}
+
 void ObjectB::test()
 {
 	cout << "Test B" << endl;
+}
+
+ObjectC::ObjectC()
+{
+	cout << "Create C" << endl;
+}
+
+ObjectC::~ObjectC()
+{
+	cout << "Delete C" << endl;
+}
+
+ObjectASDF::ObjectASDF()
+{
+	cout << "Create ASDF" << endl;
+}
+
+ObjectASDF::~ObjectASDF()
+{
+	cout << "Delete ASDF" << endl;
 }

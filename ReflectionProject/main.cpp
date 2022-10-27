@@ -1,118 +1,55 @@
-#include <iostream>
-#include <Windows.h>
-#include <tchar.h>
+#include <windows.h>
 #include <conio.h>
+#include <tchar.h>
+#include <typeinfo>
+#include <iostream>
+#include "../MyDLL/ObjectA.h"
 
-class ObjectA;
-class ObjectB;
-
-typedef void (*PrintTest)(void);
-typedef ObjectA* (*CreateObjA)();
-typedef ObjectB* (*CreateObjB)();
-typedef void(*callFunc)(ObjectA*);
-
-#define asd\
-
-
-class A
+extern "C"
 {
-public:
-	size_t GetTypeHash();
-public:
-	A() : x(100), y(100) {};
-
-	void print(int* _x, int* _y)
+	__declspec(dllexport) RuntimeClass* RTInstance()
 	{
-		std::cout << "Print" << std::endl;
-		std::cout << "Print" << std::endl;
-
-		std::cout << _x << std::endl;
-		std::cout << _y << std::endl;
-
-		*_x = 1000;
-		*_y = 1000;
+		return RuntimeClass::GetInstance();
 	}
 
-	void print2()
+	__declspec(dllexport) std::map<std::string, RuntimeClass*>& RTClasses()
 	{
-		std::cout << "Print" << std::endl;
-		std::cout << "Print" << std::endl;
+		return RuntimeClass::GetRTClasses();
 	}
-
-	void print3()
-	{
-		std::cout << "Print" << std::endl;
-		std::cout << "Print" << std::endl;
-	}
-
-	void print4()
-	{
-		std::cout << "Print" << std::endl;
-		std::cout << "Print" << std::endl;
-	}
-
-	int x;
-	int y;
-};
+}
 
 int main()
 {
-	A a;
+	while (true)
+	{
+		if (_kbhit() != 0)
+		{
+			char input = _getch();
 
-	void(__thiscall A::*temp3)(int*, int*) = &A::print;
-	void(__thiscall * test3)(int*, int*) = reinterpret_cast<void(__thiscall *&)(int*, int*)>(temp3);
+			if (input == 'q')
+				break;
 
-	std::cout << &a.x << std::endl;
-	std::cout << &a.y << std::endl;
+			HMODULE hDll = LoadLibrary(_T("MyDLL.dll"));
 
-	test3(&(a.x), &(a.y));
+			if (hDll != nullptr)
+			{
+				auto objA = RuntimeClass::GetInstance()->CreateObject("ObjectA");
+				auto objB = RuntimeClass::GetInstance()->CreateObject("ObjectB");
 
-	std::cout << a.x << std::endl;
-	std::cout << a.y << std::endl;
+				std::cout << typeid(objA->GetType()).name() << std::endl;
+				std::cout << typeid(objB).name() << std::endl;
 
-	//while (true)
-	//{
-	//	if (_kbhit() != 0)
-	//	{
-	//		char input = _getch();
+				RuntimeClass::GetInstance()->PrintAll();
 
-	//		if (input == 'q')
-	//			break;
+				delete objA;
+				delete objB;
 
-	//		HMODULE hDll = LoadLibrary(_T("../Debug/MyDLL.dll"));
+				RuntimeClass::Release();
 
-	//		if (hDll != nullptr)
-	//		{
-	//			PrintTest temp = reinterpret_cast<PrintTest>(GetProcAddress(hDll, "Print"));
-
-	//			CreateObjA testa = reinterpret_cast<CreateObjA>(GetProcAddress(hDll, "CreateObjectA"));
-	//			CreateObjB testb = reinterpret_cast<CreateObjB>(GetProcAddress(hDll, "CreateObjectB"));
-	//			callFunc test = reinterpret_cast<callFunc>(GetProcAddress(hDll, "CallTest"));
-
-	//			ObjectA* tempA = testa();
-	//			ObjectB* tempB = testb();
-
-	//			temp();
-	//			
-	//			test(tempA);
-	//			test(reinterpret_cast<ObjectA*>(tempB));
-
-	//			delete tempA;
-	//			delete tempB;
-
-	//			FreeLibrary(hDll);
-	//		}
-	//	}
-	//}
+				FreeLibrary(hDll);
+			}
+		}
+	}
 
 	return 0;
-}
-
-size_t A::GetTypeHash()
-{
-	static size_t uP;
-
-	x = 1000;
-
-	return reinterpret_cast<size_t>(&uP);
 }

@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.1.32210.238
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReflectionProject", "ReflectionProject\ReflectionProject.vcxproj", "{29494D3C-8535-429C-A932-FB8342A13645}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8C2E3115-FF09-4E12-B975-60199AE48AD7} = {8C2E3115-FF09-4E12-B975-60199AE48AD7}
+		{DF8FED27-77E7-41E9-BF5A-A57013513D03} = {DF8FED27-77E7-41E9-BF5A-A57013513D03}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyDLL", "MyDLL\MyDLL.vcxproj", "{8C2E3115-FF09-4E12-B975-60199AE48AD7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReflectionLibrary", "ReflectionLibrary\ReflectionLibrary.vcxproj", "{DF8FED27-77E7-41E9-BF5A-A57013513D03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +37,14 @@ Global
 		{8C2E3115-FF09-4E12-B975-60199AE48AD7}.Release|x64.Build.0 = Release|x64
 		{8C2E3115-FF09-4E12-B975-60199AE48AD7}.Release|x86.ActiveCfg = Release|Win32
 		{8C2E3115-FF09-4E12-B975-60199AE48AD7}.Release|x86.Build.0 = Release|Win32
+		{DF8FED27-77E7-41E9-BF5A-A57013513D03}.Debug|x64.ActiveCfg = Debug|x64
+		{DF8FED27-77E7-41E9-BF5A-A57013513D03}.Debug|x64.Build.0 = Debug|x64
+		{DF8FED27-77E7-41E9-BF5A-A57013513D03}.Debug|x86.ActiveCfg = Debug|Win32
+		{DF8FED27-77E7-41E9-BF5A-A57013513D03}.Debug|x86.Build.0 = Debug|Win32
+		{DF8FED27-77E7-41E9-BF5A-A57013513D03}.Release|x64.ActiveCfg = Release|x64
+		{DF8FED27-77E7-41E9-BF5A-A57013513D03}.Release|x64.Build.0 = Release|x64
+		{DF8FED27-77E7-41E9-BF5A-A57013513D03}.Release|x86.ActiveCfg = Release|Win32
+		{DF8FED27-77E7-41E9-BF5A-A57013513D03}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
