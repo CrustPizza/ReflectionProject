@@ -17,11 +17,7 @@ RuntimeClass::Type* RuntimeClass::CreateObject(const std::string& className)
 	auto result = GetRTClasses().find(className);
 
 	if (result == GetRTClasses().end())
-	{
-		Type t;
-
-		return &t;
-	}
+		return nullptr;
 
 	return result->second->CreateObject();
 }
@@ -38,9 +34,11 @@ RuntimeClass::Type* RuntimeClass::GetType()
 
 void RuntimeClass::PrintAll()
 {
+	int count = 1;
+
 	for (auto& iter : GetRTClasses())
 	{
-		std::cout << iter.first << std::endl;
+		std::cout << "[" << count++ << "] " << iter.first << std::endl;
 	}
 }
 

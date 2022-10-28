@@ -52,3 +52,33 @@ public:
 
 	virtual ~ObjectASDF();
 };
+
+class MYDLL_DECLSPEC TestClass : public RuntimeClass
+{
+	DECLARE_RUNTIME_CLASS(TestClass)
+
+public:
+	TestClass();
+
+	virtual ~TestClass();
+};
+
+class MYDLL_DECLSPEC Test1Class : public RuntimeClass
+{
+	DECLARE_RUNTIME_CLASS(Test1Class)
+
+public:
+	Test1Class();
+
+	virtual ~Test1Class();
+};
+
+class MYDLL_DECLSPEC BadOKM : public RuntimeClass
+{
+	DECLARE_RUNTIME_CLASS(BadOKM)
+
+public:
+	BadOKM();
+
+	virtual ~BadOKM();
+};

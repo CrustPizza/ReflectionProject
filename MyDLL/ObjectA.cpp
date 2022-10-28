@@ -5,6 +5,14 @@
 using std::cout;
 using std::endl;
 
+REGISTER_RUNTIME_CLASS(ObjectA);
+REGISTER_RUNTIME_CLASS(ObjectB);
+REGISTER_RUNTIME_CLASS(ObjectC);
+REGISTER_RUNTIME_CLASS(ObjectASDF);
+REGISTER_RUNTIME_CLASS(TestClass);
+REGISTER_RUNTIME_CLASS(Test1Class);
+REGISTER_RUNTIME_CLASS(BadOKM);
+
 ObjectA::ObjectA()
 {
 	cout << "Create A" << endl;
@@ -53,4 +61,34 @@ ObjectASDF::ObjectASDF()
 ObjectASDF::~ObjectASDF()
 {
 	cout << "Delete ASDF" << endl;
+}
+
+TestClass::TestClass()
+{
+	cout << "Create TestClass" << endl;
+}
+
+TestClass::~TestClass()
+{
+	cout << "Delete TestClass" << endl;
+}
+
+Test1Class::Test1Class()
+{
+	cout << "Create Test1Class" << endl;
+}
+
+Test1Class::~Test1Class()
+{
+	cout << "Delete Test1Class" << endl;
+}
+
+BadOKM::BadOKM()
+{
+	cout << "Create BadOKM" << endl;
+}
+
+BadOKM::~BadOKM()
+{
+	cout << "Delete BadOKM" << endl;
 }
